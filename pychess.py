@@ -198,6 +198,10 @@ class Game:
 
 	def run(self):
 		command = ""
+		print("Формат ввода:\n	комманда вида '<БУКВА 1><ЧИСЛО 1>;<БУКВА 2><ЧИСЛО 2>',\n	\
+где БУКВА находится в интервале от A до H (латиница),\n	\
+а ЦИФРА от 1 до 8.\n	\
+Для выхода введите 'q'\n")
 		while ("q" not in command and self.status == GameStatus.ACTIVE):
 			print(("White" if self.turn.isWhiteSide else "Black") + " turn")
 			print(self.board)
@@ -237,6 +241,8 @@ class CommandParser:
 				return ord(char) - 65
 			return None
 
+		if (len(command) < 5):
+			return False
 		sx, sy, ex, ey = mapCoord(command[0]), mapCoord(command[1]), mapCoord(command[3]), mapCoord(command[4])
 		if any(_ is None for _ in (sx, sy, ex, ey)):
 			print("Wrong command syntax:", sx, sy, ex, ey)
