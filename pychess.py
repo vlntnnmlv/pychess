@@ -259,7 +259,8 @@ class Moover:
 
 	def move(self, t, turn):
 		if (t["start"].piece and \
-			t["start"].piece.canMove(self.board, t["start"], t["end"])):
+			t["start"].piece.canMove(self.board, t["start"], t["end"]) and \
+			t["start"].piece.isWhite == turn.isWhiteSide):
 
 			res = Move(t["start"], t["end"])
 			res.pieceMoved = t["start"].piece
