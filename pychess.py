@@ -114,6 +114,8 @@ class Pawn(Piece):
 			return True
 		if (x == 0 and y == 2 and not self.stepped):
 			return True
+		if (x == 1 and y == 1 and end.piece is not None):
+			return True
 		return False
 
 	def __str__(self):
